@@ -1,0 +1,287 @@
+/*------------------------------------------------------  CONFIGURAÇÕES GERAIS INICIO  ------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Krona One', sans-serif;
+}
+
+body {
+    background-image: url(Imagens/floresta.png);
+    background-size: cover;
+    /* Cobrir toda a área disponível */
+    background-repeat: no-repeat;
+    /* Não repetir a imagem */
+    background-attachment: fixed;
+    /* Fixar a imagem para que não role com a página */
+}
+
+/*--------------------------------------------------------  CONFIGURAÇÕES GERAIS FIM  --------------------------------------------------------*/
+
+
+
+/*------------------------------------------------------  CONFIGURAÇÕES HEADER INICIO  ------------------------------------------------------*/
+
+.my_header_2 a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.my_header li:hover{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5),
+    0 0 30px #0042255d;
+}
+.my_header {
+    font-size: 0.85rem;
+    background-color: #004225d9;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 180px;
+    font-family: 'Krona One', sans-serif;
+}
+
+.my_header_1 img {
+    width: 100px;
+    height: 100px;
+}
+
+.my_header_2 ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    list-style: none;
+}
+
+.my_header_2 li {
+    padding: 10px;
+}
+
+.my_header_2 li:hover {
+    background-color: rgba(255, 255, 255, 0.427);
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.997); /* Adiciona um efeito luminoso verde com box shadow */
+    transition: box-shadow 0.3s ease-in-out; /* Adiciona uma transição suave ao box shadow */
+}
+
+
+.my_header_3 img {
+    width: 35px;
+    height: 35px;
+}
+
+.dropdown button {
+    background-color: #004225;
+}
+
+.dropdown button:hover {
+    background-color: #004225;
+}
+
+
+@media (min-width: 0px) and (max-width: 650px) {
+    .my_header {
+        flex-direction: column;
+        height: auto;
+
+    }
+
+    .my_header_2 ul {
+        display: none;
+    }
+
+    .my_header_2_1 {
+        margin: 20px;
+    }
+
+    .my_header_2 li {
+        padding: 10px;
+    }
+}
+
+@media (min-width: 650px) and (max-width: 50000px) {
+    .my_header_2_1 {
+        display: none;
+    }
+
+}
+
+
+
+/*--------------------------------------------------------  CONFIGURAÇÕES HEADER FIM  --------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------  CONFIGURAÇÕES SECTION INICIO  --------------------------------------------------------*/
+
+.my_section_1 button:hover{
+    background-color: #004225;
+    padding: 15px;
+}
+
+.my_section {
+    background-color: #0042255d;
+    margin: 40px;
+    height: 300px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.my_section a{
+    color: black;
+    text-decoration: none;
+    font-family: 'Krona One', sans-serif;
+    
+}
+.my_section a:hover{
+    color: white;
+
+}
+
+.my_section button {
+    padding: 10px;
+    margin: 7.5px;
+    background-color: white;
+    border: none;
+    border-radius: 3.5px;
+}
+
+
+.my_section_2 {
+
+    font-family: 'Krona One', sans-serif;
+    font-size: 1.5rem;
+    color: white;
+
+}
+
+@media (min-width: 0px) and (max-width: 650px) {
+    .my_section {
+        margin: 35px 0px;
+        height: auto;
+    }
+
+    .my_section {
+        text-align: center;
+        /* Centraliza o conteúdo horizontalmente */
+        display: flex;
+        flex-direction: column;
+        /* Faz os elementos filhos ficarem empilhados verticalmente */
+        align-items: center;
+        /* Centraliza verticalmente os elementos filhos */
+    }
+
+    .my_section_2 h2,
+    .my_section_2 p {
+        text-align: center;
+        /* Centraliza o texto horizontalmente */
+    }
+}
+
+/*--------------------------------------------------------  CONFIGURAÇÕES SECTION FIM  --------------------------------------------------------*/
+
+
+.my_home{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.my_home button{
+    border: none;
+    padding: 15px;
+    background-color: blue;
+}
+
+.my_home a{
+    text-decoration: none;
+    color: black;
+}
+
+/*--------------------------------------------------------  CONFIGURAÇÕES MAIN INICIO  ---------------------------------------------------------*/
+
+
+
+
+.main_home{
+    margin-top: 300px;
+    height: auto;
+    background-image: url(Imagens/Captura\ de\ tela\ 2023-10-15\ 111714.png);
+
+
+}
+
+.main_1{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.cartoon{
+    background-color: rgba(255, 255, 255, 0.546);
+    padding: 25px;
+    border-radius: 60px;
+    margin-right: 10px;
+    margin-top: 30px;
+    
+}
+
+.cartoon h5, p{
+
+    font-size: 0.8rem;
+    color: black;
+}
+.cartoon_button button{
+    padding: 12px;
+    border-radius: 7px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.527);
+}
+.cartoon_button h6{
+    color: black;
+}
+
+.cartoon_button button:hover{
+
+    background-color: #00f7ff88;
+}
+
+.cartoon_button p{
+    font-size: 1rem;
+    color: white;
+}
+
+.cartoon_button_description{
+    background-color: #0042255d;
+    padding: 10px;
+    border-radius: 10px;
+    width: auto;
+    margin: 10px 15px;
+    
+}
+
+ /* Estilos CSS para tornar a div cartoon responsiva */
+ .cartoon {
+    max-width: 100%;
+    text-align: center;
+}
+
+/* Estilos CSS para tornar as imagens responsivas */
+.img-responsive {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+/*--------------------------------------------------------  CONFIGURAÇÕES MAIN FIM  ------------------------------------------------------------*/
+
+/*-------------------------------------- footer inicio --------------------------------------*/
+
+/* --------------------------------------footer fim --------------------------------------*/

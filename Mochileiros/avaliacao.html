@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mochileiros On-line</title>
+    <link rel="stylesheet" href="avaliacao.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="home.css">
+    <style>
+        #opcoesSelecionadas {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="my_header">
+        <div class="my_header_1">
+            <a href="#"><img src="home-img/backpack.png" alt="backpack"></a>
+        </div>
+        <div class="my_header_2">
+            <ul>
+                <li><strong><a href="home.html">Home</a></strong></li>
+                <li><strong><a href="evento.html">Eventos</a></strong></li>
+                <li><strong><a href="CadastroFornecedores.html">Cadastro de Eventos</a></strong></li>
+                <li><strong><a href="index.html">IQF</a></strong></li>
+                <li><strong><a href="SegurancaUsuario.html">Denúncia</a></strong></li>
+                <li><strong><a href="avaliacao.html">Avalie-nos</a></strong></li>
+                <li><strong><a href="grupo.html">Cadastrar Grupo</a></strong></li>
+                <li><strong><a href="GruposCadastrados.html">Grupos</a></strong></li>
+                <li><strong><a href="indicador.html">Desempenho do site</a></strong></li>
+            </ul>
+        </div>
+        <div class="my_header_2_1">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Menu
+                </button>
+                <ul class="dropdown-menu">
+                    <li><strong><a class="dropdown-item" href="home.html">Home</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="evento.html">Eventos</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="CadastroFornecedores.html">Cadastro de Eventoss</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="index.html">IQF</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="SegurancaUsuario.html">Denúncia</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="avaliacao.html">Avalie-nos</a></strong></li>
+                    <li><strong><a href="grupo.html">Cadastrar Grupo</a></strong></li>
+                    <li><strong><a href="GruposCadastrados.html">Grupos</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="indicador.html">Desempenho do site</a></strong></li>
+                </ul>
+            </div>
+        </div>
+        <div class="my_header_3">
+            <a href="usuario.html"><img src="home-img/do-utilizador.png" alt="user-icon"></a>
+        </div>
+    </header>
+    <main class="main_1_avaliation_page">
+        <div>
+            <div class="avaliation_card_title">
+                <h2>Olá viajante!</h2>
+                <h3>Avalie os nossos serviços e nos ajude a melhor te atender!</h3>
+            </div>
+            <form action="/action_page.php" onsubmit="armazenarOpcoes(event)">
+                <p>Por favor confirme o seu sexo:</p>
+                <div class="flex_container">
+                    <input type="radio" id="masculino" name="sexo" value="Masculino">
+                    <label for="masculino">Masculino</label>
+                    <input type="radio" id="feminino" name="sexo" value="Feminino">
+                    <label for="feminino">Feminino</label>
+                </div><br>
+                <p>Por favor, selecione sua idade:</p>
+                <div class="flex_container">
+                    <input type="radio" id="age1" name="idade" value="30">
+                    <label for="age1">0 - 30 anos</label>
+                    <input type="radio" id="age2" name="idade" value="60">
+                    <label for="age2">31 - 60 anos</label>
+                    <input type="radio" id="age3" name="idade" value="100">
+                    <label for="age3">61 - 100 anos</label>
+                </div><br>
+                <p>Qual é o seu nível de satisfação?</p>
+                <div class="flex_container">
+                    <input type="radio" id="excelente" name="escolha" value="Excelente">
+                    <label for="excelente">Excelente</label>
+                    <input type="radio" id="bom" name="escolha" value="Bom">
+                    <label for="bom">Bom</label>
+                    <input type="radio" id="regular" name="escolha" value="Regular">
+                    <label for="regular">Regular</label>
+                    <input type="radio" id="insatisfatorio" name="escolha" value="Insatisfatório">
+                    <label for="insatisfatorio">Insatisfatório</label>
+                </div><br>
+                <p>Você indicaria os nossos serviços?</p>
+                <div class="flex_container">
+                    <input type="radio" id="sim" name="indicacao" value="Sim">
+                    <label for="sim">Sim</label>
+                    <input type="radio" id="nao" name="indicacao" value="Não">
+                    <label for="nao">Não</label>
+                </div><br>
+                <p>Por favor, insira o seu CPF:</p>
+                <div class="flex_container">
+                    <input type="text" id="cpf" name="cpf" placeholder="CPF" required>
+                </div><br>
+                <input type="submit" value="Validar" id="button_avaliation">
+
+            </form>
+            <div id="opcoesSelecionadas">
+                <h3>Opções Selecionadas:</h3>
+                <ul>
+                    <li>Sexo: <span id="sexoSelecionado"></span></li>
+                    <li>Idade: <span id="idadeSelecionada"></span></li>
+                    <li>Escolha: <span id="escolhaSelecionada"></span></li>
+                    <li>Indicação: <span id="indicacaoSelecionada"></span></li>
+                    <li>CPF: <span id="cpfSelecionado"></span></li>
+                </ul>
+            </div>
+            <!-- <div class="porcentagem-container">
+                <h3>Porcentagem de Avaliações:</h3>
+                <div id="porcentagens">
+                    <p>Excelente: <span id="porcentagemExcelente"></span>%</p>
+                    <p>Bom: <span id="porcentagemBom"></span>%</p>
+                    <p>Regular: <span id="porcentagemRegular"></span>%</p>
+                    <p>Insatisfatório: <span id="porcentagemInsatisfatorio"></span>%</p>
+                </div>
+            </div>-->
+
+        </div>
+    </main>
+
+
+
+
+    <script>
+        function enviarDadosAvaliacao(data) {
+            fetch("http://localhost:8080/avaliacoes", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    if (response.status === 200) {
+                        alert("Dados enviados com sucesso!");
+                        // Redirecionar o usuário para indicador.html
+                        window.location.href = "indicador.html";
+                    } else {
+                        alert("Erro ao enviar os dados.");
+                    }
+                })
+                .catch(error => {
+                    alert("Erro de rede: " + error.message);
+                });
+        }
+
+
+        function exibirPorcentagens() {
+            // Recupere porcentagens do servidor ou calcule-as e atualize a interface aqui
+
+            const porcentagemExcelente = 75.5; 
+            const porcentagemBom = 18.2; 
+            const porcentagemRegular = 4.3; 
+            const porcentagemInsatisfatorio = 1.9; 
+
+            document.getElementById("porcentagemExcelente").textContent = porcentagemExcelente.toFixed(2);
+            document.getElementById("porcentagemBom").textContent = porcentagemBom.toFixed(2);
+            document.getElementById("porcentagemRegular").textContent = porcentagemRegular.toFixed(2);
+            document.getElementById("porcentagemInsatisfatorio").textContent = porcentagemInsatisfatorio.toFixed(2);
+
+            document.getElementById("porcentagens").style.display = "block";
+        }
+
+        const form = document.querySelector("form");
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const sexo = document.querySelector('input[name="sexo"]:checked').value;
+            const idade = document.querySelector('input[name="idade"]:checked').value;
+            const escolha = document.querySelector('input[name="escolha"]:checked').value;
+            const indicacao = document.querySelector('input[name="indicacao"]:checked').value;
+            const cpf = document.querySelector('input[name="cpf"]').value;
+
+            const opcoesSelecionadas = {
+                sexo,
+                idade,
+                escolha,
+                indicacao,
+                cpf
+            };
+
+            document.getElementById("sexoSelecionado").textContent = sexo;
+            document.getElementById("idadeSelecionada").textContent = idade;
+            document.getElementById("escolhaSelecionada").textContent = escolha;
+            document.getElementById("indicacaoSelecionada").textContent = indicacao;
+            document.getElementById("cpfSelecionado").textContent = cpf;
+            document.getElementById("opcoesSelecionadas").style.display = "block";
+
+            enviarDadosAvaliacao(opcoesSelecionadas);
+        });
+    </script>
+
+    <script>
+        function exibirPorcentagens() {
+            fetch("http://localhost:8080/avaliacoes/porcentagem/nivel")
+                .then(response => response.json())
+                .then(data => {
+                    const porcentagemExcelente = data["Excelente"];
+                    const porcentagemBom = data["Bom"];
+                    const porcentagemRegular = data["Regular"];
+                    const porcentagemInsatisfatorio = data["Insatisfatório"];
+
+                    document.getElementById("porcentagemExcelente").textContent = porcentagemExcelente.toFixed(2) + "%";
+                    document.getElementById("porcentagemBom").textContent = porcentagemBom.toFixed(2) + "%";
+                    document.getElementById("porcentagemRegular").textContent = porcentagemRegular.toFixed(2) + "%";
+                    document.getElementById("porcentagemInsatisfatorio").textContent = porcentagemInsatisfatorio.toFixed(2) + "%";
+
+                    document.getElementById("porcentagens").style.display = "block";
+                })
+                .catch(error => {
+                    // alert("Erro ao recuperar as porcentagens: " + error.message);
+                });
+        }
+
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

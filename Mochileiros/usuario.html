@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados do Usuário</title>
+    <link rel="stylesheet" href="home.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        .container-usuario {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .titulo-usuario {
+            font-size: 24px;
+        }
+
+        .tabela-usuario {
+            width: 100%;
+        }
+
+        .tabela-usuario,
+        .cabecalho-tabela,
+        .dados-tabela {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+        }
+
+        .cabecalho-tabela {
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+
+        .dados-tabela {
+            padding: 10px;
+        }
+
+        .botao-sair {
+            background-color: #d9534f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="my_header">
+        <div class="my_header_1">
+            <a href="#"><img src="home-img/backpack.png" alt="backpack"></a>
+        </div>
+        <div class="my_header_2">
+            <ul>
+                <li><strong><a href="home.html">Home</a></strong></li>
+                <li><strong><a href="evento.html">Eventos</a></strong></li>
+                <li><strong><a href="CadastroFornecedores.html">Cadastro de Eventos</a></strong></li>
+                <li><strong><a href="index.html">IQF</a></strong></li>
+                <li><strong><a href="SegurancaUsuario.html">Denúncia</a></strong></li>
+                <li><strong><a href="avaliacao.html">Avalie-nos</a></strong></li>
+                <li><strong><a href="grupo.html">Cadastrar Grupo</a></strong></li>
+                <li><strong><a href="GruposCadastrados.html">Grupos</a></strong></li>
+                <li><strong><a href="indicador.html">Desempenho do site</a></strong></li>
+            </ul>
+        </div>
+        <div class="my_header_2_1">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Menu
+                </button>
+                <ul class="dropdown-menu">
+                    <li><strong><a class="dropdown-item" href="home.html">Home</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="evento.html">Eventos</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="CadastroFornecedores.html">Cadastro de Eventoss</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="index.html">IQF</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="SegurancaUsuario.html">Denúncia</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="avaliacao.html">Avalie-nos</a></strong></li>
+                    <li><strong><a href="grupo.html">Cadastrar Grupo</a></strong></li>
+                    <li><strong><a href="GruposCadastrados.html">Grupos</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="indicador.html">Desempenho do site</a></strong></li>
+                </ul>
+            </div>
+        </div>
+        <div class="my_header_3">
+            <a href="usuario.html"><img src="home-img/do-utilizador.png" alt="user-icon"></a>
+        </div>
+    </header>
+    <div class="container-usuario">
+        <h1 class="titulo-usuario">Dados do Usuário</h1>
+        <table class="tabela-usuario">
+            <tr class="cabecalho-tabela">
+                <th>Email</th>
+                <td id="email"></td>
+            </tr>
+            <tr class="dados-tabela">
+                <th>CPF</th>
+                <td id="cpf"></td>
+            </tr>
+            <tr class="cabecalho-tabela">
+                <th>Nome</th>
+                <td id="nome"></td>
+            </tr>
+            <tr class="dados-tabela">
+                <th>Estado</th>
+                <td id="estado"></td>
+            </tr>
+            <tr class="cabecalho-tabela">
+                <th>Senha</th>
+                <td id="senha"></td>
+            </tr>
+        </table>
+    </div>
+
+    <button class="botao-sair" id="logout-button">Sair</button>
+
+    <script>
+        // Função para obter parâmetros da URL
+        function getURLParameters() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            return Object.fromEntries(urlParams);
+        }
+
+        // Função para preencher os campos com os dados do usuário
+        function preencherDadosDoUsuario() {
+            const params = getURLParameters();
+
+            // Preencha os campos com os dados do usuário
+            document.getElementById('email').textContent = params.email || 'Email não encontrado';
+            document.getElementById('cpf').textContent = params.cpf || 'CPF não encontrado';
+            document.getElementById('nome').textContent = params.nome || 'Nome não encontrado';
+            document.getElementById('estado').textContent = params.estado || 'Estado não encontrado';
+            document.getElementById('senha').textContent = params.senha || 'Senha não encontrada';
+        }
+
+        // Função para limpar os campos de dados do usuário
+        function limparDadosDoUsuario() {
+            document.getElementById('email').textContent = '';
+            document.getElementById('cpf').textContent = '';
+            document.getElementById('nome').textContent = '';
+            document.getElementById('estado').textContent = '';
+            document.getElementById('senha').textContent = '';
+        }
+
+        // Chame a função para preencher os dados do usuário quando a página for carregada
+        window.addEventListener('load', preencherDadosDoUsuario);
+
+        document.getElementById('logout-button').addEventListener('click', function () {
+            // Limpe os dados do usuário atual
+            limparDadosDoUsuario();
+
+            // Redirecione o usuário de volta para a página inicial (home.html) ou a página de login (entrar.html)
+            window.location.href = 'entrar.html'; // Altere o destino do redirecionamento conforme necessário
+        });
+    </script>
+
+    <script>
+        // Função para limpar os dados do usuário
+        function limparDadosDoUsuario() {
+            localStorage.removeItem('usuario');
+        }
+
+        // Chame a função para preencher os dados do usuário quando a página for carregada
+        window.addEventListener('load', function () {
+            const usuario = JSON.parse(localStorage.getItem('usuario'));
+
+            if (usuario) {
+                document.getElementById('email').textContent = usuario.email || 'Email não encontrado';
+                document.getElementById('cpf').textContent = usuario.cpf || 'CPF não encontrado';
+                document.getElementById('nome').textContent = usuario.nome || 'Nome não encontrado';
+                document.getElementById('estado').textContent = usuario.estado || 'Estado não encontrado';
+                document.getElementById('senha').textContent = usuario.senha || 'Senha não encontrada';
+            } else {
+                // Redirecione o usuário de volta para a página de login
+                window.location.href = 'entrar.html'; // Altere o destino do redirecionamento conforme necessário
+            }
+        });
+
+        document.getElementById('logout-button').addEventListener('click', function () {
+            // Limpe os dados do usuário atual
+            limparDadosDoUsuario();
+
+            // Redirecione o usuário de volta para a página de login
+            window.location.href = 'entrar.html'; // Altere o destino do redirecionamento conforme necessário
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

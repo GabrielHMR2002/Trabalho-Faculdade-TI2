@@ -1,0 +1,103 @@
+/* Estilo para o corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para o cabeçalho */
+.header {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #000000;
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.header2-1 {
+    list-style-type: none;
+    padding: 0;
+}
+
+.header2-1 li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.header2-1 a {
+    text-decoration: none;
+    color: #000000;
+}
+
+/* Estilo para a área de conteúdo */
+.content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #004225d9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+/* Estilo para os formulários */
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+select,
+textarea {
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.592);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #004225;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #007740;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 600px) {
+    .content {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    select,
+    textarea {
+        width: 100%;
+    }
+}
+
+
+

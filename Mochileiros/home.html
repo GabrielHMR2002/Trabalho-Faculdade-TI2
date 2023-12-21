@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="home.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <header class="my_header">
+        <div class="my_header_1">
+            <a href="#"><img src="home-img/backpack.png" alt="backpack"></a>
+        </div>
+        <div class="my_header_2">
+            <ul>
+                <li><strong><a href="home.html">Home</a></strong></li>
+                <li><strong><a href="evento.html">Eventos</a></strong></li>
+                <li><strong><a href="CadastroFornecedores.html">Cadastro de Eventos</a></strong></li>
+                <li><strong><a href="index.html">IQF</a></strong></li>
+                <li><strong><a href="SegurancaUsuario.html">Denúncia</a></strong></li>
+                <li><strong><a href="avaliacao.html">Avalie-nos</a></strong></li>
+                <li><strong><a href="grupo.html">Cadastrar Grupo</a></strong></li>
+                <li><strong><a href="GruposCadastrados.html">Grupos</a></strong></li>
+                <li><strong><a href="indicador.html">Desempenho do site</a></strong></li>
+            </ul>
+        </div>
+        <div class="my_header_2_1">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Menu
+                </button>
+                <ul class="dropdown-menu">
+                    <li><strong><a class="dropdown-item" href="home.html">Home</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="evento.html">Eventos</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="CadastroFornecedores.html">Cadastro de Eventoss</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="index.html">IQF</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="SegurancaUsuario.html">Denúncia</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="avaliacao.html">Avalie-nos</a></strong></li>
+                    <li><strong><a href="grupo.html">Cadastrar Grupo</a></strong></li>
+                    <li><strong><a href="GruposCadastrados.html">Grupos</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="indicador.html">Desempenho do site</a></strong></li>
+                </ul>
+            </div>
+        </div>
+        <div class="my_header_3">
+            <a href="usuario.html"><img src="home-img/do-utilizador.png" alt="user-icon"></a>
+        </div>
+    </header>
+
+
+    <section class="my_section">
+        <div class="my_section_1">
+            <button><a href="entrar.html">Entrar</a></button>
+            <button><a href="cadastro.html">Cadastre-se</a></button>
+        </div>
+        <div class="my_section_2">
+            <h2><strong>Seja muito bem vindo Mochileiro(a)</strong></h2>
+            <br>
+            <p>Convido todos os Mochileiros(as) à <strong>viajarem</strong> pelo nosso site em busca de novas aventuras!
+            </p>
+        </div>
+    </section>
+
+
+    <main class="main_home">
+        <div class="main_1">
+            <div>
+                <div class="cartoon">
+                    <h4><strong>Olá, vamos começar nossa viagem pelo site?</strong></h4>
+                    <br>
+                    <p>Clique no botão "Viajar" para obter informações sobre o site!</p>
+                </div>
+                <img class="img-responsive" id="personagemImage" src="personagem/up-home.ico" alt="">
+                <!-- Nova imagem oculta -->
+                <img class="img-responsive" id="novaImagem" src="personagem/up-abertura-transformed.ico" alt=""
+                    style="display: none;">
+            </div>
+            <div class="cartoon_button">
+                <button id="viajarButton">Viajar</button>
+                <p>Prescisa de mais ajuda? </p>
+                <p>Entre em contato <strong style="color: black;">Mochileiros@gmail.com</strong></p>
+
+                <div id="explicacao" class="cartoon_button_description" style="display: none;">
+                    <div>
+                        <h6>Página Inicial (Home):</h6>
+                        <p>
+                            A porta de entrada do site, fornecendo informações gerais, onde os
+                            visitantes iniciam sua jornada.
+                        </p>
+                        <br>
+
+                        <h6>Eventos</h6>
+                        <p>
+                            Aqui são registrados todos os eventos que foram cadastrados pelos usuários.
+                        </p>
+
+                        <h6>Cadastro de Eventos:</h6>
+                        <p>
+                            Uma seção para que os usuários possam cadastrar eventos
+                        </p>
+                        <br>
+
+
+
+
+                        <h6>Avalie-nos:</h6>
+                        <p>
+                            Uma área onde os usuários podem compartilhar avaliações,
+                            contribuindo para a melhoria da qualidade e da experiência do site.
+                        </p>
+
+
+                        <h6>Desempenho do site</h6>
+
+                        <p>
+                            Mostra o desempenho total do site.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </main>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Adicione um evento de clique ao botão "Viajar"
+        const viajarButton = document.getElementById("viajarButton");
+        const explicacao = document.getElementById("explicacao");
+        const personagemImage = document.getElementById("personagemImage");
+        const novaImagem = document.getElementById("novaImagem");
+
+        viajarButton.addEventListener("click", function () {
+            // Verifica se a explicação está visível
+            if (explicacao.style.display === "none") {
+                // Desloca suavemente o conteúdo para a esquerda
+                $(".cartoon").animate({ marginLeft: "-1000px" }, 2000);
+                // Exibe a explicação lentamente
+                $(explicacao).fadeIn(2000);
+                // Alterna para a nova imagem
+                personagemImage.style.display = "none";
+                novaImagem.style.display = "block";
+            } else {
+                // Oculta a explicação
+                explicacao.style.display = "none";
+                // Desloca o conteúdo de volta para a posição original
+                $(".cartoon").animate({ marginLeft: "0" }, 1500);
+                // Alterna de volta para a imagem original
+                personagemImage.style.display = "block";
+                novaImagem.style.display = "none";
+            }
+        });
+    </script>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Cards</title>
+    <link rel="stylesheet" href="evento.css">
+    <link rel="stylesheet" href="home.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+    <header class="my_header">
+        <div class="my_header_1">
+            <a href="#"><img src="home-img/backpack.png" alt="backpack"></a>
+        </div>
+        <div class="my_header_2">
+            <ul>
+                <li><strong><a href="home.html">Home</a></strong></li>
+                <li><strong><a href="evento.html">Eventos</a></strong></li>
+                <li><strong><a href="CadastroFornecedores.html">Cadastro de Eventos</a></strong></li>
+                <li><strong><a href="index.html">IQF</a></strong></li>
+                <li><strong><a href="SegurancaUsuario.html">Denúncia</a></strong></li>
+                <li><strong><a href="avaliacao.html">Avalie-nos</a></strong></li>
+                <li><strong><a href="grupo.html">Cadastrar Grupo</a></strong></li>
+                <li><strong><a href="GruposCadastrados.html">Grupos</a></strong></li>
+                <li><strong><a href="indicador.html">Desempenho do site</a></strong></li>
+            </ul>
+        </div>
+        <div class="my_header_2_1">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Menu
+                </button>
+                <ul class="dropdown-menu">
+                    <li><strong><a class="dropdown-item" href="home.html">Home</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="evento.html">Eventos</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="CadastroFornecedores.html">Cadastro de Eventoss</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="index.html">IQF</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="SegurancaUsuario.html">Denúncia</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="avaliacao.html">Avalie-nos</a></strong></li>
+                    <li><strong><a href="grupo.html">Cadastrar Grupo</a></strong></li>
+                    <li><strong><a href="GruposCadastrados.html">Grupos</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="indicador.html">Desempenho do site</a></strong></li>
+                </ul>
+            </div>
+        </div>
+        <div class="my_header_3">
+            <a href="usuario.html"><img src="home-img/do-utilizador.png" alt="user-icon"></a>
+        </div>
+    </header>
+
+    <div id="cards-container"></div>
+
+    
+
+    <script>
+        function createCard(eventData) {
+            const card = document.createElement('div');
+            card.className = 'event-card';
+            card.innerHTML = `
+                <h3>${eventData.nomeEvento || 'Nome do Evento não especificado'}</h3>
+                <p class="event-info">Descrição do evento: ${eventData.descricaoEvento || 'Descrição não especificada'}</p>
+                <p class="event-info">Data do evento: ${eventData.dataEvento || 'Data não especificada'}</p>
+                <p class="event-info">Hora do evento: ${eventData.horaEvento || 'Hora não especificada'}</p>
+                <p class="event-info">Local do evento: ${eventData.localEvento || 'Local não especificado'}</p>
+                <p class="event-info">Tipo do evento: ${eventData.tipoEvento || 'Tipo não especificado'}</p>
+                <p class="event-info">Nome da empresa: ${eventData.nomeEmpresa || 'Empresa não especificada'}</p>
+                <p class="event-info">Contato: ${eventData.contato || 'Contato não especificado'}</p>
+                <p class="event-info">E-mail: ${eventData.email || 'E-mail não especificado'}</p>
+                <p class="event-info">Local da empresa: ${eventData.localEmpresa || 'Local da empresa não especificado'}</p>
+                <p class="event-info">Produto/Serviço que oferece: ${eventData.servicoOferecido || 'Produto/Serviço não especificado'}</p>
+            `;
+            return card;
+        }
+
+        async function updateCards() {
+            try {
+                const response = await fetch('http://localhost:8080/cadastrofornecedor/listar');
+                const data = await response.json();
+                const cardsContainer = document.getElementById('cards-container');
+
+                cardsContainer.innerHTML = '';
+
+                data.forEach(eventData => {
+                    const card = createCard(eventData);
+                    cardsContainer.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Erro ao buscar dados do servidor:', error);
+            }
+        }
+
+        // Atualize os cards a cada 10 segundos (10000 milissegundos)
+        setInterval(updateCards, 10000);
+
+        // Execute a função de atualização imediatamente
+        updateCards();
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

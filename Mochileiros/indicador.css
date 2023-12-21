@@ -1,0 +1,67 @@
+
+
+.main {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+
+.indicator {
+    width: 500px;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #004225d9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.indicator:hover {
+    transform: scale(1.05);
+}
+
+.indicator h2 {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.indicator p {
+    font-size: 20px;
+    color: #ffffff;
+}
+
+
+.porcentagem-container {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #004225d9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.porcentagem-container:hover {
+    transform: scale(1.05);
+}
+
+.porcentagem-container h3 {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.porcentagem-container p {
+    font-size: 20px;
+    color: #ffffff;
+    margin: 10px 0;
+}
+
+@media (min-width: 0px) and (max-width: 650px) {
+.indicator{
+    width: auto;
+}
+}

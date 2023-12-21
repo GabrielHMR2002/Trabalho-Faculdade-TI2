@@ -1,0 +1,35 @@
+
+
+.main_grupo{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.form_grupo{
+    color: white;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #004225d9;
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_grupo input{
+    margin: 15px 0px;
+}
+
+.button_grupo{
+   
+    margin-left: 80px;
+}
+
+.button_grupo p{
+    font-size: 1.34rem;
+    color: white;
+}
+

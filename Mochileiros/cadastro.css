@@ -1,0 +1,341 @@
+/*.cadastro-page {
+    background-image: none;
+     Anule o plano de fundo da página de cadastro 
+}
+*/
+.container {
+
+
+    margin-top: 100px;
+    padding: 20px;
+    background-color: #ffffff40;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.main {
+
+    margin: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1c591088;
+    border-radius: 40px;
+    width: auto;
+    padding-right: 40px;
+
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5),
+        0 0 30px rgb(0, 255, 60);
+
+
+}
+
+.navigation-button {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+
+.main_1 img {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+}
+
+.main_1 {
+    background-color: transparent;
+}
+
+.main button:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5),
+        0 0 30px rgb(255, 255, 255);
+    padding: 12px;
+}
+
+h2 {
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.container button {
+    margin: 3.5px;
+    border: none;
+    padding: 10px;
+    background-color: #004225;
+}
+
+.container input {
+    margin: 12.5px;
+}
+
+.container a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.container input {
+    width: 80%;
+}
+
+.main_1_1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.my_header_2 a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Centralize horizontalmente os nomes "Mochileiro" e "Mochileira" */
+.main_1_2 {
+    text-align: center;
+    /* Centralize o texto horizontalmente */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main_1_2 button {
+    padding: 10px;
+    background-color: transparent;
+}
+
+.viajante_mulher {
+    background-color: rgba(255, 255, 255, 0.485);
+    padding: 10px;
+
+    margin: 3px;
+}
+
+.viajante_homem button {
+    border: none;
+}
+
+.viajante_mulher button {
+    border: none;
+}
+
+.viajante_homem {
+    background-color: rgba(255, 255, 255, 0.485);
+    padding: 10px;
+    margin: 3px;
+
+}
+
+/* Estilos CSS para dispositivos de até 1000px de largura */
+@media (max-width: 1000px) {
+
+    .main {
+        flex-direction: column;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+}
+
+@media (max-width: 700px) {
+    .main {
+        margin: 20px;
+    }
+
+    .main img,
+    .main button {
+        border: none;
+        margin: 3px;
+        width: 80px;
+        height: 80px;
+        font-size: 0.5rem;
+    }
+
+    .container {
+        padding: 10px;
+        width: 90%;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+    }
+
+    .container button {
+        margin: 5px;
+        padding: 5px;
+        font-size: 0.5rem;
+    }
+}
+
+
+input[type="text"],
+input[type="password"] {
+    display: none;
+
+}
+
+input[type="text"].visible,
+input[type="password"].visible {
+    display: block;
+    animation: slide-in 0.5s ease-in-out forwards;
+}
+
+@keyframes slide-in {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+button {
+    margin: 5px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#avancar-button,
+#voltar-button {
+    background-color: #1c5910;
+    /* Cor personalizada para os botões Avançar e Voltar */
+}
+
+#cadastrar-button,
+#ja-possui-conta-button {
+    background-color: #004225;
+    /* Cor personalizada para os botões Cadastrar e Já possui uma conta? */
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+
+.instrucoes {
+    background-color: rgba(255, 255, 255, 0.483);
+    width: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 40px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+
+}
+
+
+@media screen and (max-width: 900px) {
+    .up-img {
+        display: none;
+    }
+
+}
+
+
+
+.hidden {
+    display: none;
+
+}
+
+
+.fade-in {
+    animation: fadeIn 5s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+
+/* Estilos CSS para tornar o conteúdo responsivo */
+.instrucoes-container {
+    background-color: rgba(229, 223, 223, 0.58);
+    width: auto;
+    font-size: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 15px;
+    border-radius: 10px;
+}
+
+.instrucoes-container button {
+    background-color: #004225;
+    margin: 20px;
+    margin-bottom: 10px;
+    font-size: 0.5rem;
+}
+
+
+#instrucoes-text {
+    max-width: 100%;
+}
+
+
+.fade-in {
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

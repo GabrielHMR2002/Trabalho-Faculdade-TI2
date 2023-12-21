@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mochileiros On-line - Cadastro</title>
+
+    <link rel="stylesheet" href="cadastro.css">
+    <link rel="stylesheet" href="home.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body class="cadastro-page">
+    <header class="my_header">
+        <div class="my_header_1">
+            <a href="#"><img src="home-img/backpack.png" alt="backpack"></a>
+        </div>
+        <div class="my_header_2">
+            <ul>
+                <li><strong><a href="home.html">Home</a></strong></li>
+                <li><strong><a href="evento.html">Eventos</a></strong></li>
+                <li><strong><a href="CadastroFornecedores.html">Cadastro de Eventos</a></strong></li>
+                <li><strong><a href="index.html">IQF</a></strong></li>
+                <li><strong><a href="SegurancaUsuario.html">Denúncia</a></strong></li>
+                <li><strong><a href="avaliacao.html">Avalie-nos</a></strong></li>
+                <li><strong><a href="grupo.html">Cadastrar Grupo</a></strong></li>
+                <li><strong><a href="GruposCadastrados.html">Grupos</a></strong></li>
+                <li><strong><a href="indicador.html">Desempenho do site</a></strong></li>
+            </ul>
+        </div>
+        <div class="my_header_2_1">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Menu
+                </button>
+                <ul class="dropdown-menu">
+                    <li><strong><a class="dropdown-item" href="home.html">Home</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="evento.html">Eventos</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="CadastroFornecedores.html">Cadastro de Eventoss</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="index.html">IQF</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="SegurancaUsuario.html">Denúncia</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="avaliacao.html">Avalie-nos</a></strong></li>
+                    <li><strong><a href="grupo.html">Cadastrar Grupo</a></strong></li>
+                    <li><strong><a href="GruposCadastrados.html">Grupos</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="indicador.html">Desempenho do site</a></strong></li>
+                </ul>
+            </div>
+        </div>
+        <div class="my_header_3">
+            <a href="usuario.html"><img src="home-img/do-utilizador.png" alt="user-icon"></a>
+        </div>
+    </header>
+
+    <div style="display: flex; justify-content: center; align-items: center;">
+
+
+        <div class="instrucoes-container">
+            <button id="mostrar-instrucoes-button">Instruções para cadastro</button>
+            <div id="instrucoes-text" class="hidden">
+                <h3>Instruções para Cadastro</h3>
+                <p>Bem-vindo ao nosso sistema de cadastro no Mochileiros On-line! Para se tornar um Mochileiro(a), siga
+                    estas etapas:</p>
+
+                <ol>
+                    <li>Escolha o seu gênero: Selecione se você é um <strong>Mochileiro</strong> ou uma
+                        <strong>Mochileira</strong> clicando no botão correspondente.
+                    </li>
+
+                    <li>Preencha seus dados: Preencha os campos obrigatórios do formulário com as seguintes informações:
+                        <ul>
+                            <li><strong>Email:</strong> Insira um endereço de email válido, como "mochileiro@gmail.com".
+                            </li>
+                            <li><strong>CPF:</strong> Digite o seu CPF.</li>
+                            <li><strong>Nome:</strong> Informe o seu nome completo.</li>
+                            <li><strong>Estado:</strong> Especifique o estado onde você reside.</li>
+                            <li><strong>Cidade:</strong> Informe a sua cidade atual.</li>
+                            <li><strong>Senha:</strong> Escolha uma senha segura para acessar a sua conta.</li>
+                        </ul>
+                    </li>
+
+                    <li>Avançar e voltar: Use os botões "Avançar" e "Voltar" para navegar entre os campos do formulário.
+                        Certifique-se de preencher todos os campos corretamente.</li>
+
+                    <li>Concluir o cadastro: Quando todos os campos estiverem preenchidos corretamente, o botão
+                        "Cadastrar" estará disponível. Clique nele para finalizar o seu cadastro.</li>
+                </ol>
+
+                <p>Após o cadastro, você poderá explorar eventos, serviços e muito mais! Se você já possui uma conta,
+                    clique no botão "Já possui uma conta?" para fazer login.</p>
+            </div>
+        </div>
+        </section>
+    </div>
+
+
+
+
+
+    <main class="main">
+        <div class="main_1">
+
+            <div class="main_1_1">
+
+                <div class="main_1_2">
+
+                    <div>
+                        <img src="viajantes/homem.png" alt="">
+                    </div>
+                    <div class="viajante_mulher"><button>Mochileira</button></div>
+                </div>
+                <div class="main_1_2">
+                    <div class="main_1_2_2">
+                        <img src="viajantes/mulher.png" alt="">
+                    </div>
+                    <div class="viajante_homem"><button>Mochileiro</button></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2>Dê o seu primeiro passo para se tornar um Mochileiro(a): </h2>
+            <br>
+            <h2>
+                <strong>Cadastre-se viajante!</strong>
+            </h2>
+            <form id="registration-form" action="minhaConta.html" method="post">
+                <input type="text" id="email" name="email" placeholder="Mochileiro(a)@gmail.com" required
+                    class="visible">
+
+                <input type="text" id="cpf" name="cpf" placeholder="123.456.789-00">
+                <input type="text" id="nome" name="nome" placeholder="Nome do Mochileiro(a)">
+                <input type="text" id="estado" name="estado" placeholder="Estado">
+                <input type="text" id="cidade" name="cidade" placeholder="Cidade">
+                <input type="password" id="senha" name="senha" placeholder="Senha">
+                <button id="avancar-button">Avançar</button>
+                <button id="voltar-button">Voltar</button>
+                <button type="submit" id="cadastrar-button" class="hidden">Cadastrar</button>
+
+                <button id="ja-possui-conta-button"><a href="entrar.html">Já possui uma conta?</a></button>
+            </form>
+
+        </div>
+    </main>
+    <script>
+        document.getElementById("mostrar-instrucoes-button").addEventListener("click", function () {
+            const instrucoesText = document.getElementById("instrucoes-text");
+
+            if (instrucoesText.style.display === "none" || instrucoesText.style.display === "") {
+                instrucoesText.style.display = "block";
+                instrucoesText.classList.add("fade-in"); // Adiciona uma classe para a animação
+            } else {
+                instrucoesText.style.display = "none";
+            }
+        });
+
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("registration-form");
+            const campos = form.querySelectorAll("input[type='text'], input[type='password']");
+            const avancarButton = document.getElementById("avancar-button");
+            const voltarButton = document.getElementById("voltar-button");
+            const cadastrarButton = document.getElementById("cadastrar-button");
+            let campoAtual = 0;
+
+            avancarButton.addEventListener("click", function (event) {
+                event.preventDefault();
+
+                if (campoAtual === campos.length - 1) {
+                    alert("Clique em 'Cadastrar' para finalizar o cadastro.");
+                } else {
+                    campos[campoAtual].classList.remove("visible");
+                    campoAtual++;
+
+                    if (campoAtual < campos.length) {
+                        campos[campoAtual].classList.add("visible");
+                    }
+                }
+
+                // Verifica se o usuário está no sexto campo (índice 5) e oculta o botão "Avançar"
+                if (campoAtual === 5) {
+                    avancarButton.style.display = "none";
+                }
+
+                // Mostra o botão "Voltar" se necessário
+                if (campoAtual > 0) {
+                    voltarButton.style.display = "block";
+                }
+
+                // Exibe o botão "Cadastrar" se o usuário estiver no último campo
+                if (campoAtual === campos.length - 1) {
+                    cadastrarButton.classList.remove("hidden");
+                }
+            });
+
+            voltarButton.addEventListener("click", function (event) {
+                event.preventDefault();
+
+                if (campoAtual > 0) {
+                    campos[campoAtual].classList.remove("visible");
+                    campoAtual--;
+                    campos[campoAtual].classList.add("visible");
+                }
+
+                // Oculta o botão "Cadastrar" ao voltar para campos anteriores
+                cadastrarButton.classList.add("hidden");
+
+                // Mostra o botão "Avançar" ao voltar
+                avancarButton.style.display = "block";
+
+                // Oculta o botão "Voltar" se voltar ao primeiro campo
+                if (campoAtual === 0) {
+                    voltarButton.style.display = "none";
+                }
+            });
+        });
+
+    </script>
+
+    <script>
+        const form = document.getElementById("registration-form");
+        const campos = form.querySelectorAll("input[type='text'], input[type='password']");
+        const avancarButton = document.getElementById("avancar-button");
+        const voltarButton = document.getElementById("voltar-button");
+        const jaPossuiContaButton = document.getElementById("ja-possui-conta-button");
+        let campoAtual = 0;
+
+        avancarButton.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            if (campoAtual === campos.length - 1) {
+                alert("Clique em 'Cadastrar' para finalizar o cadastro.");
+            } else {
+                campos[campoAtual].classList.remove("visible");
+                campoAtual++;
+
+                if (campoAtual < campos.length) {
+                    campos[campoAtual].classList.add("visible");
+                }
+            }
+        });
+
+        voltarButton.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            if (campoAtual > 0) {
+                campos[campoAtual].classList.remove("visible");
+                campoAtual--;
+                campos[campoAtual].classList.add("visible");
+            }
+        });
+
+
+
+    </script>
+
+
+
+    <script>
+        const viajanteMulherButton = document.querySelector(".viajante_mulher button");
+        const viajanteHomemButton = document.querySelector(".viajante_homem button");
+        const main = document.querySelector(".main");
+        const header = document.querySelector(".my_header");
+        const entrarButton = document.getElementById("entrar-button");
+        const cadastrarButton = document.getElementById("cadastrar-button");
+
+        const mochileiraImage = document.getElementById("mochileira-image");
+        const mochileiroImage = document.getElementById("mochileiro-image");
+
+        viajanteMulherButton.addEventListener("click", function () {
+            main.style.backgroundColor = "rgba(129, 37, 235, 0.472)";
+            header.style.backgroundColor = "rgba(129, 37, 235, 0.472)";
+            entrarButton.style.backgroundColor = "rgba(129, 37, 235, 0.472)";
+            cadastrarButton.style.backgroundColor = "rgba(129, 37, 235, 0.472)";
+
+
+            mochileiraImage.style.display = "block";
+            mochileiroImage.style.display = "none";
+        });
+
+        viajanteHomemButton.addEventListener("click", function () {
+            main.style.backgroundColor = "rgba(1, 149, 255, 0.384)";
+            header.style.backgroundColor = "rgba(1, 149, 255, 0.384)";
+            entrarButton.style.backgroundColor = "rgba(1, 149, 255, 0.384)";
+            cadastrarButton.style.backgroundColor = "rgba(1, 149, 255, 0.384)";
+
+            // Exibe a imagem do mochileiro e esconde a imagem da mochileira
+            mochileiroImage.style.display = "block";
+            mochileiraImage.style.display = "none";
+        });
+    </script>
+
+
+
+    <script>
+        function validarTodasInformacoes() {
+            if (
+                validarCidadeForm() &&
+                validarCidadeServicoForm() &&
+                validarEventoForm() &&
+                validarFornecedorForm() &&
+                validarTipoServicoForm()
+            ) {
+                alert("Todas as informações foram confirmadas com sucesso!");
+                return true;
+            }
+            alert("Por favor, preencha todos os campos corretamente antes de confirmar as informações.");
+            return false;
+        }
+
+        function validarCidadeForm() {
+            const cidadeInput = document.getElementById("cidade");
+            if (cidadeInput.value.trim() === "") {
+                alert("Por favor, preencha o campo Cidade do evento.");
+                return false;
+            }
+            return true;
+        }
+
+        function validarCidadeServicoForm() {
+            const cidadeServicoInput = document.getElementById("cidadeServico");
+            if (cidadeServicoInput.value.trim() === "") {
+                alert("Por favor, preencha o campo Cidade de prestação de serviço.");
+                return false;
+            }
+            return true;
+        }
+
+        function validarEventoForm() {
+            const nomeEventoInput = document.getElementById("nomeEvento");
+            const descricaoEventoInput = document.getElementById("descricaoEvento");
+            const dataEventoInput = document.getElementById("dataEvento");
+            const horaEventoInput = document.getElementById("horaEvento");
+            const localEventoInput = document.getElementById("localEvento");
+            const tipoEventoInput = document.getElementById("tipoEvento");
+
+            if (nomeEventoInput.value.trim() === "" ||
+                descricaoEventoInput.value.trim() === "" ||
+                dataEventoInput.value === "" ||
+                horaEventoInput.value === "" ||
+                localEventoInput.value.trim() === "" ||
+                tipoEventoInput.value.trim() === "") {
+                alert("Por favor, preencha todos os campos do formulário de evento.");
+                return false;
+            }
+            return true;
+        }
+
+        function validarFornecedorForm() {
+            const nomeEmpresaInput = document.getElementById("nomeEmpresa");
+            const contatoInput = document.getElementById("contato");
+            const emailInput = document.getElementById("email");
+            const localEmpresaInput = document.getElementById("localEmpresa");
+            const servicoOferecidoInput = document.getElementById("servicoOferecido");
+
+            if (nomeEmpresaInput.value.trim() === "" ||
+                contatoInput.value.trim() === "" ||
+                emailInput.value.trim() === "" ||
+                localEmpresaInput.value.trim() === "" ||
+                servicoOferecidoInput.value.trim() === "") {
+                alert("Por favor, preencha todos os campos do formulário de fornecedor.");
+                return false;
+            }
+
+            const contatoValue = contatoInput.value.replace(/\D/g, ''); // Remova caracteres não numéricos
+            if (contatoValue.length !== 11) {
+                alert("O campo Contato deve ter 11 dígitos numéricos.");
+                return false;
+            }
+
+            return true;
+        }
+
+        function validarTipoServicoForm() {
+            const servicoOferecidoInput = document.getElementById("servicoOferecido");
+            if (servicoOferecidoInput.value.trim() === "") {
+                alert("Por favor, forneça informações sobre os tipos de serviços oferecidos.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+    <script>
+        document.getElementById("registration-form").addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const cpf = document.getElementById("cpf").value;
+            const nome = document.getElementById("nome").value;
+            const estado = document.getElementById("estado").value;
+            const cidade = document.getElementById("cidade").value;
+            const senha = document.getElementById("senha").value;
+
+            const formData = {
+                email: email,
+                cpf: cpf,
+                nome: nome,
+                estado: estado,
+                cidade: cidade,
+                senha: senha
+            };
+
+            try {
+                const response = await fetch("http://localhost:8080/cadastros", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(formData),
+                });
+
+                if (response.status === 200) {
+                    alert("Cadastro bem-sucedido!");
+                    // Redirecionar para outra página, se necessário
+                    window.location.href = "home.html";
+                } else {
+                    alert("Falha ao cadastrar. Verifique os dados e tente novamente.");
+                }
+            } catch (error) {
+                alert("Erro de rede. Tente novamente mais tarde.");
+                console.error("Erro de rede: " + error.message);
+            }
+        });
+    </script>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

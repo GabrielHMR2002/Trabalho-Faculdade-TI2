@@ -1,0 +1,103 @@
+/* evento.css */
+
+/* Estilos dos cabeçalhos */
+.event-header {
+    background-color: #da1313;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+
+.event-header-1 img {
+    width: 24px;
+    height: 24px;
+}
+
+.event-header-2 ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.event-header-2 li {
+    margin-right: 20px;
+}
+
+.event-header-2-1 .dropdown-toggle {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.event-header-2-1 .dropdown-menu {
+    background-color: #333;
+}
+
+/* Estilos dos cards de evento */
+#cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.event-card {
+    background-color: #ffffffb8;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: calc(33.33% - 20px);
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.427); 
+}
+
+.event-card :hover{
+    background-color: #004225d9;
+    color: white;
+}
+
+.event-card h3 {
+    background-color: #004225ac;
+    color: #fff;
+    padding: 10px;
+    margin: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.event-info {
+    margin: 0;
+    padding: 5px 0;
+}
+
+/* Estilos responsivos para telas menores */
+@media (max-width: 768px) {
+    .event-card {
+        width: 100%;
+    }
+}
+
+/* Estilização padrão dos cards */
+.event-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s, background-color 0.3s;
+}
+
+
+.event-card:hover {
+    background-color: #78797788;
+    box-shadow: 0 12px 24px rgba(255, 255, 255, 0.4), 0 0 40px rgba(255, 223, 186, 0.6);
+    color: #fff;
+}
+

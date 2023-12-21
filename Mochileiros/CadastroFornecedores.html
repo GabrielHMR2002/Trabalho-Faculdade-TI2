@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de fornecedores</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="CadastroFornecedores.css">
+    <link rel="stylesheet" href="home.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <header class="my_header">
+        <div class="my_header_1">
+            <a href="#"><img src="home-img/backpack.png" alt="backpack"></a>
+        </div>
+        <div class="my_header_2">
+            <ul>
+                <li><strong><a href="home.html">Home</a></strong></li>
+                <li><strong><a href="evento.html">Eventos</a></strong></li>
+                <li><strong><a href="CadastroFornecedores.html">Cadastro de Eventos</a></strong></li>
+                <li><strong><a href="index.html">IQF</a></strong></li>
+                <li><strong><a href="SegurancaUsuario.html">Denúncia</a></strong></li>
+                <li><strong><a href="avaliacao.html">Avalie-nos</a></strong></li>
+                <li><strong><a href="grupo.html">Cadastrar Grupo</a></strong></li>
+                <li><strong><a href="GruposCadastrados.html">Grupos</a></strong></li>
+                <li><strong><a href="indicador.html">Desempenho do site</a></strong></li>
+            </ul>
+        </div>
+        <div class="my_header_2_1">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Menu
+                </button>
+                <ul class="dropdown-menu">
+                    <li><strong><a class="dropdown-item" href="home.html">Home</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="evento.html">Eventos</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="CadastroFornecedores.html">Cadastro de Eventoss</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="index.html">IQF</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="SegurancaUsuario.html">Denúncia</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="avaliacao.html">Avalie-nos</a></strong></li>
+                    <li><strong><a href="grupo.html">Cadastrar Grupo</a></strong></li>
+                    <li><strong><a href="GruposCadastrados.html">Grupos</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="indicador.html">Desempenho do site</a></strong></li>
+                </ul>
+            </div>
+        </div>
+        <div class="my_header_3">
+            <a href="usuario.html"><img src="home-img/do-utilizador.png" alt="user-icon"></a>
+        </div>
+    </header>
+    <div class="content">
+        <h2>Processo de Contratação de Fornecedor</h2>
+
+        <form id="formCidade">
+            <label for="cidade">Estado do evento:</label>
+            <input type="text" id="cidade" name="cidade" required>
+            <br>
+        </form>
+
+        <form id="formCidadeServico">
+            <label for="cidadeServico">Cidade de prestação de serviço:</label>
+            <input type="text" id="cidadeServico" name="cidadeServico" required>
+            <br>
+        </form>
+        <!-- Formulário Cadastrar e Confirmar Evento -->
+        <form id="formEvento">
+            <label for="nomeEvento">Nome do evento:</label>
+            <input type="text" id="nomeEvento" name="nomeEvento" maxlength="20" required>
+            <br>
+            <label for="descricaoEvento">Descrição do evento:</label>
+            <textarea id="descricaoEvento" name="descricaoEvento" rows="4" cols="50" maxlength="500"
+                required></textarea>
+            <br>
+            <label for="dataEvento">Data do evento:</label>
+            <input type="date" id="dataEvento" name="dataEvento" required>
+            <br>
+            <label for="horaEvento">Hora do evento:</label>
+            <input type="time" id="horaEvento" name="horaEvento" required>
+            <br>
+            <label for="localEvento">Local do evento:</label>
+            <input type="text" id="localEvento" name="localEvento" required>
+            <br>
+            <label for="tipoEvento">Tipo do evento:</label>
+            <input type="text" id="tipoEvento" name="tipoEvento" required>
+            <br>
+        </form>
+        <!-- Formulário Cadastro de Fornecedor -->
+        <form id="formFornecedor">
+            <label for="nomeEmpresa">Nome da empresa:</label>
+            <input type="text" id="nomeEmpresa" name="nomeEmpresa" required>
+            <br>
+            <label for="contato">Contato:</label>
+            <br>
+            <input type="number" id="contato" name="contato" pattern="[0-9]{11}" required>
+            <br>
+            <label for="email">E-mail:</label>
+            <br>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <label for="localEmpresa">Local da empresa:</label>
+            <input type="text" id="localEmpresa" name="localEmpresa" required>
+            <br>
+            <br>
+        </form>
+        <!-- Formulário Disponibilizar informações sobre os tipos de serviços oferecidos -->
+        <form id="formTipoServico">
+            <label for="servicoOferecido">Produto/Serviço que oferece:</label>
+            <textarea id="servicoOferecido" name="servicoOferecido" rows="4" cols="50" required></textarea>
+            <br>
+        </form>
+        <button type="button" id="confirmarTodasInformacoes" onclick="validarTodasInformacoes()">Confirmar
+            Informações</button>
+    </div>
+
+
+
+    <script>
+        function validarTodasInformacoes() {
+            if (
+                validarCidadeForm() &&
+                validarCidadeServicoForm() &&
+                validarEventoForm() &&
+                validarFornecedorForm() &&
+                validarTipoServicoForm()
+            ) {
+                alert("Todas as informações foram confirmadas com sucesso!");
+                return true;
+            }
+            return false;
+        }
+
+        function validarCidadeForm() {
+            const cidadeInput = document.getElementById("cidade");
+            if (cidadeInput.value.trim() === "") {
+
+                return false;
+            }
+            return true;
+        }
+
+        function validarCidadeServicoForm() {
+            const cidadeServicoInput = document.getElementById("cidadeServico");
+            if (cidadeServicoInput.value.trim() === "") {
+                alert("Por favor, preencha o campo Cidade de prestação de serviço.");
+                return false;
+            }
+            return true;
+        }
+
+        function validarEventoForm() {
+            const nomeEventoInput = document.getElementById("nomeEvento");
+            const descricaoEventoInput = document.getElementById("descricaoEvento");
+            const dataEventoInput = document.getElementById("dataEvento");
+            const horaEventoInput = document.getElementById("horaEvento");
+            const localEventoInput = document.getElementById("localEvento");
+            const tipoEventoInput = document.getElementById("tipoEvento");
+
+            if (nomeEventoInput.value.trim() === "" ||
+                descricaoEventoInput.value.trim() === "" ||
+                dataEventoInput.value === "" ||
+                horaEventoInput.value === "" ||
+                localEventoInput.value.trim() === "" ||
+                tipoEventoInput.value.trim() === "") {
+                alert("Por favor, preencha todos os campos do formulário de evento.");
+                return false;
+            }
+            return true;
+        }
+
+        function validarFornecedorForm() {
+            const nomeEmpresaInput = document.getElementById("nomeEmpresa");
+            const contatoInput = document.getElementById("contato");
+            const emailInput = document.getElementById("email");
+            const localEmpresaInput = document.getElementById("localEmpresa");
+            const servicoOferecidoInput = document.getElementById("servicoOferecido");
+
+            if (nomeEmpresaInput.value.trim() === "" ||
+                contatoInput.value.trim() === "" ||
+                emailInput.value.trim() === "" ||
+                localEmpresaInput.value.trim() === "" ||
+                servicoOferecidoInput.value.trim() === "") {
+                alert("Por favor, preencha todos os campos do formulário de fornecedor.");
+                return false;
+            }
+
+        }
+
+        function validarTipoServicoForm() {
+            const servicoOferecidoInput = document.getElementById("servicoOferecido");
+            if (servicoOferecidoInput.value.trim() === "") {
+                alert("Por favor, forneça informações sobre os tipos de serviços oferecidos.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+
+    <script>
+        document.getElementById("confirmarTodasInformacoes").addEventListener("click", function () {
+            // Valide todas as informações, se necessário
+            if (validarTodasInformacoes()) {
+                // Se todas as informações estiverem válidas, redirecione o usuário para a página "evento.html"
+                window.location.href = "evento.html";
+            }
+        });
+    </script>
+
+
+<script>
+    async function enviarDados() {
+        const cidade = document.getElementById("cidade").value;
+        const cidadeServico = document.getElementById("cidadeServico").value;
+        const nomeEvento = document.getElementById("nomeEvento").value;
+        const descricaoEvento = document.getElementById("descricaoEvento").value;
+        const dataEvento = document.getElementById("dataEvento").value;
+        const horaEvento = document.getElementById("horaEvento").value;
+        const localEvento = document.getElementById("localEvento").value;
+        const tipoEvento = document.getElementById("tipoEvento").value;
+        const nomeEmpresa = document.getElementById("nomeEmpresa").value;
+        const contato = document.getElementById("contato").value;
+        const email = document.getElementById("email").value;
+        const localEmpresa = document.getElementById("localEmpresa").value;
+        const servicoOferecido = document.getElementById("servicoOferecido").value;
+
+        function isValidEmail(email) {
+        const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+        return emailRegex.test(email);
+    }
+    
+        if (
+            cidade === "" ||
+            cidadeServico === "" ||
+            nomeEvento === "" ||
+            descricaoEvento === "" ||
+            dataEvento === "" ||
+            !isValidEmail(email) ||
+            horaEvento === "" ||
+            localEvento === "" ||
+            tipoEvento === "" ||
+            nomeEmpresa === "" ||
+            contato === "" ||
+            email === "" ||
+            localEmpresa === "" ||
+            servicoOferecido === ""
+        ) {
+            alert("Por favor, preencha todos os campos antes de enviar os dados.");
+            return;
+        }
+    
+        const contatoValue = contato.replace(/\D/g, ''); // Remova caracteres não numéricos
+        if (contatoValue.length !== 11) {
+            alert("O campo Contato deve ter exatamente 11 dígitos numéricos.");
+            return;
+        }
+    
+        const dados = {
+            cidade,
+            cidadeServico,
+            nomeEvento,
+            descricaoEvento,
+            dataEvento,
+            horaEvento,
+            localEvento,
+            tipoEvento,
+            nomeEmpresa,
+            contato: contatoValue, // Use o valor limpo
+            email,
+            localEmpresa,
+            servicoOferecido,
+        };
+    
+        try {
+            const response = await fetch("http://localhost:8080/cadastrofornecedor/salvar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(dados),
+            });
+    
+            if (response.ok) {
+                alert("Dados enviados com sucesso!");
+                window.location.href = "evento.html";
+            } else {
+                alert("Erro ao enviar os dados. Por favor, tente novamente.");
+            }
+        } catch (error) {
+            console.error("Erro de rede: " + error.message);
+        }
+    }
+    
+    document.getElementById("confirmarTodasInformacoes").addEventListener("click", enviarDados);
+    </script>
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indicadores de Desempenho</title>
+    <link rel="stylesheet" href="indicador.css">
+    <link rel="stylesheet" href="home.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="teste.css">
+</head>
+
+<body>
+
+    <header class="my_header">
+        <div class="my_header_1">
+            <a href="#"><img src="home-img/backpack.png" alt="backpack"></a>
+        </div>
+        <div class="my_header_2">
+            <ul>
+                <li><strong><a href="home.html">Home</a></strong></li>
+                <li><strong><a href="evento.html">Eventos</a></strong></li>
+                <li><strong><a href="CadastroFornecedores.html">Cadastro de Eventos</a></strong></li>
+                <li><strong><a href="index.html">IQF</a></strong></li>
+                <li><strong><a href="SegurancaUsuario.html">Denúncia</a></strong></li>
+                <li><strong><a href="avaliacao.html">Avalie-nos</a></strong></li>
+                <li><strong><a href="grupo.html">Cadastrar Grupo</a></strong></li>
+                <li><strong><a href="GruposCadastrados.html">Grupos</a></strong></li>
+                <li><strong><a href="indicador.html">Desempenho do site</a></strong></li>
+            </ul>
+        </div>
+        <div class="my_header_2_1">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Menu
+                </button>
+                <ul class="dropdown-menu">
+                    <li><strong><a class="dropdown-item" href="home.html">Home</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="evento.html">Eventos</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="CadastroFornecedores.html">Cadastro de Eventoss</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="index.html">IQF</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="SegurancaUsuario.html">Denúncia</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="avaliacao.html">Avalie-nos</a></strong></li>
+                    <li><strong><a href="grupo.html">Cadastrar Grupo</a></strong></li>
+                    <li><strong><a href="GruposCadastrados.html">Grupos</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="indicador.html">Desempenho do site</a></strong></li>
+                </ul>
+            </div>
+        </div>
+        <div class="my_header_3">
+            <a href="usuario.html"><img src="home-img/do-utilizador.png" alt="user-icon"></a>
+        </div>
+    </header>
+    <main class="main">
+        <section>
+
+            <div class="indicator">
+                <h2>Avaliações por Gênero</h2>
+                <div id="genderChartContainer" class="chart-container">
+                    <canvas id="genderChart" width="400" height="400"></canvas>
+                </div>
+            </div>
+
+            <div class="indicator" id="votos-container">
+                <h2>Avaliações por gênero detalhada:</h2>
+                <p>Carregando dados...</p>
+            </div>
+
+            <div class="indicator">
+                <h2>Indicação do Site</h2>
+                <p id="siteRecommendation">Carregando...</p>
+                <p id="noRecommendation">Carregando...</p>
+                <div id="recommendationChartContainer" class="chart-container">
+                    <canvas id="recommendationChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+
+            <div class="porcentagem-container">
+                <h3>Porcentagem de Avaliações:</h3>
+                <div id="porcentagens">
+                    <p>Excelente: <span id="porcentagemExcelente"></span>%</p>
+                    <p>Bom: <span id="porcentagemBom"></span>%</p>
+                    <p>Regular: <span id="porcentagemRegular"></span>%</p>
+                    <p>Insatisfatório: <span id="porcentagemInsatisfatorio"></span>%</p>
+                    <div id="avaliacoesChartContainer" class="chart-container">
+                        <canvas id="avaliacoesChart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="indicator">
+                <div id="countsChartContainer" class="chart-container">
+                    <canvas id="countsChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+
+            <div class="indicator">
+                <h2>Média dos Resultados IQF</h2>
+                <p id="mediaIqf">Carregando...</p>
+                <p id="totalAvaliacoes">Carregando...</p>
+            </div>
+
+            <script>
+                // Função para buscar os dados do localhost:8080/iqf
+                fetch('http://localhost:8080/iqf')
+                    .then(response => response.json())
+                    .then(data => {
+                        // Métrica 1: Contagem total de avaliações
+                        const totalAvaliacoes = data.length;
+                        document.getElementById('totalAvaliacoes').textContent = `Total de Avaliações: ${totalAvaliacoes}`;
+
+                        // Métrica 2: Média dos Resultados IQF
+                        const iqfValues = data.map(iqf => iqf.result);
+                        const avgIqf = iqfValues.reduce((acc, value) => acc + value, 0) / totalAvaliacoes;
+
+                        document.getElementById('mediaIqf').textContent = `Média dos Resultados IQF: ${avgIqf.toFixed(2)}`;
+                    })
+                    .catch(error => {
+                        console.error('Erro ao buscar dados do localhost:8080/iqf:', error);
+                        document.getElementById('totalAvaliacoes').textContent = 'Erro ao buscar dados';
+                        document.getElementById('mediaIqf').textContent = 'Erro ao calcular média';
+                    });
+            </script>
+
+
+
+
+        </section>
+    </main>
+
+
+
+    <script>
+        fetch('http://localhost:8080/avaliacoes/porcentagem/nivel')
+            .then(response => response.json())
+            .then(data => {
+                const siteRecommendation = data.PorcentagemIndicacao.Sim;
+                const noRecommendation = data.PorcentagemIndicacao.Não;
+
+                document.getElementById('siteRecommendation').textContent = `Recomendaria o site: ${siteRecommendation.toFixed(2)}%`;
+                document.getElementById('noRecommendation').textContent = `Não recomendaria o site: ${noRecommendation.toFixed(2)}%`;
+
+
+                const ctx = document.getElementById('recommendationChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Recomendaria', 'Não Recomendaria'],
+                        datasets: [{
+                            data: [siteRecommendation, noRecommendation],
+                            backgroundColor: [
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(255, 99, 132, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(255, 99, 132, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Erro ao buscar avaliações de indicação do site:', error);
+                document.getElementById('siteRecommendation').textContent = 'Erro ao buscar indicações';
+                document.getElementById('noRecommendation').textContent = 'Erro ao buscar indicações';
+            });
+    </script>
+    <script>
+        function exibirPorcentagens() {
+            fetch("http://localhost:8080/avaliacoes/porcentagem/nivel")
+                .then(response => response.json())
+                .then(data => {
+                    const porcentagemExcelente = data["Excelente"];
+                    const porcentagemBom = data["Bom"];
+                    const porcentagemRegular = data["Regular"];
+                    const porcentagemInsatisfatorio = data["Insatisfatório"];
+
+                    document.getElementById("porcentagemExcelente").textContent = porcentagemExcelente.toFixed(2) + "%";
+                    document.getElementById("porcentagemBom").textContent = porcentagemBom.toFixed(2) + "%";
+                    document.getElementById("porcentagemRegular").textContent = porcentagemRegular.toFixed(2) + "%";
+                    document.getElementById("porcentagemInsatisfatorio").textContent = porcentagemInsatisfatorio.toFixed(2) + "%";
+
+                    document.getElementById("porcentagens").style.display = "block";
+
+
+                    const ctxAvaliacoes = document.getElementById('avaliacoesChart').getContext('2d');
+                    new Chart(ctxAvaliacoes, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['Excelente', 'Bom', 'Regular', 'Insatisfatório'],
+                            datasets: [{
+                                data: [porcentagemExcelente, porcentagemBom, porcentagemRegular, porcentagemInsatisfatorio],
+                                backgroundColor: [
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(255, 99, 132, 1)'
+                                ],
+                                borderColor: [
+                                    '#2ecc71',
+                                    '#f39c12',
+                                    '#3498db',
+                                    '#e74c3c'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+
+                            legend: {
+                                position: 'top',
+                            },
+                        },
+                    });
+                })
+                .catch(error => {
+                    alert("Erro ao recuperar as porcentagens: " + error.message);
+                });
+        }
+
+        exibirPorcentagens();
+    </script>
+
+    <script>
+        async function fetchData() {
+            try {
+                const eventsResponse = await fetch('http://localhost:8080/cadastrofornecedor/listar');
+                const eventsData = await eventsResponse.json();
+                const eventsCount = eventsData.length;
+
+                const reviewsResponse = await fetch('http://localhost:8080/avaliacoes');
+                const reviewsData = await reviewsResponse.json();
+                const reviewsCount = reviewsData.length;
+
+                const usersResponse = await fetch('http://localhost:8080/cadastros/count');
+                const usersCount = await usersResponse.json();
+
+                const ctxCounts = document.getElementById('countsChart').getContext('2d');
+
+                new Chart(ctxCounts, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Eventos', 'Avaliações', 'Usuários'],
+                        datasets: [{
+                            label: 'Quantidade',
+                            data: [eventsCount, reviewsCount, usersCount],
+                            backgroundColor: [
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                            ],
+                            borderColor: [
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    },
+                });
+            } catch (error) {
+                alert("Erro ao recuperar as contagens: " + error.message);
+            }
+        }
+
+        fetchData();
+    </script>
+
+
+    <script>
+        fetch('http://localhost:8080/avaliacoes/porcentagem')
+            .then(response => response.json())
+            .then(data => {
+                const maleReviewsCount = data.PorcentagemHomens;
+                const femaleReviewsCount = data.PorcentagemMulheres;
+
+                const ctx = document.getElementById('genderChart').getContext('2d');
+                const genderChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Masculino', 'Feminino'],
+                        datasets: [{
+                            data: [maleReviewsCount, femaleReviewsCount],
+                            backgroundColor: [
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(255, 99, 132, 0.2)'
+                            ],
+                        }], borderColor: [
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(255, 99, 132, 1)'
+                        ],
+                        borderWidth: 1
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        legend: {
+                            position: 'top',
+                        },
+                    },
+                });
+            })
+            .catch(error => {
+                console.error('Erro ao buscar avaliações por gênero:', error);
+            });
+    </script>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Script para buscar o número de usuários cadastrados e atualizar o front-end -->
+    <script>
+        $.ajax({
+            url: 'http://localhost:8080/cadastros/count',
+            method: 'GET',
+            success: function (data) {
+                $('#usersCount').text(data);
+            },
+            error: function () {
+                console.error('Erro ao buscar o número de usuários cadastrados.');
+            }
+        });
+    </script>
+
+    <script>
+        function exibirPorcentagens() {
+            fetch("http://localhost:8080/avaliacoes/porcentagem/nivel")
+                .then(response => response.json())
+                .then(data => {
+                    const porcentagemExcelente = data["Excelente"];
+                    const porcentagemBom = data["Bom"];
+                    const porcentagemRegular = data["Regular"];
+                    const porcentagemInsatisfatorio = data["Insatisfatório"];
+
+                    document.getElementById("porcentagemExcelente").textContent = porcentagemExcelente.toFixed(2) + "%";
+                    document.getElementById("porcentagemBom").textContent = porcentagemBom.toFixed(2) + "%";
+                    document.getElementById("porcentagemRegular").textContent = porcentagemRegular.toFixed(2) + "%";
+                    document.getElementById("porcentagemInsatisfatorio").textContent = porcentagemInsatisfatorio.toFixed(2) + "%";
+
+                    document.getElementById("porcentagens").style.display = "block";
+                })
+                .catch(error => {
+                    alert("Erro ao recuperar as porcentagens: " + error.message);
+                });
+        }
+
+        exibirPorcentagens();
+    </script>
+
+
+
+    <script>
+        // Função para buscar o número de eventos cadastrados
+        function fetchEventsCount() {
+            fetch('http://localhost:8080/cadastrofornecedor/listar')
+                .then(response => response.json())
+                .then(data => {
+
+                    const eventsCount = data.length;
+                    document.getElementById('eventsCount').textContent = eventsCount;
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar eventos:', error);
+                    document.getElementById('eventsCount').textContent = 'Erro ao buscar eventos';
+                });
+        }
+
+        // Função para buscar o número de avaliações e indicações
+        function fetchReviewsCount() {
+            fetch('http://localhost:8080/avaliacoes')
+                .then(response => response.json())
+                .then(data => {
+
+                    const reviewsCount = data.length;
+                    document.getElementById('reviewsCount').textContent = reviewsCount;
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar avaliações:', error);
+                    document.getElementById('reviewsCount').textContent = 'Erro ao buscar avaliações';
+                });
+
+            // Adicione a busca das avaliações por gênero
+            fetch('http://localhost:8080/avaliacoes/porcentagem')
+                .then(response => response.json())
+                .then(data => {
+                    const maleReviewsCount = data.PorcentagemHomens;
+                    const femaleReviewsCount = data.PorcentagemMulheres;
+                    document.getElementById('maleReviewsCount').textContent = `Masculino: ${maleReviewsCount.toFixed(2)}%`;
+                    document.getElementById('femaleReviewsCount').textContent = `Feminino: ${femaleReviewsCount.toFixed(2)}%`;
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar avaliações por gênero:', error);
+                    document.getElementById('maleReviewsCount').textContent = 'Erro ao buscar avaliações';
+                    document.getElementById('femaleReviewsCount').textContent = 'Erro ao buscar avaliações';
+                });
+
+            // Adicione a busca das avaliações de indicação do site
+            fetch('http://localhost:8080/avaliacoes/porcentagem/nivel')
+                .then(response => response.json())
+                .then(data => {
+                    const siteRecommendation = data.PorcentagemIndicacao.Sim;
+                    const noRecommendation = data.PorcentagemIndicacao.Não;
+                    document.getElementById('siteRecommendation').textContent = `Recomendaria o site: ${siteRecommendation.toFixed(2)}%`;
+                    document.getElementById('noRecommendation').textContent = `Não recomendaria o site: ${noRecommendation.toFixed(2)}%`;
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar avaliações de indicação do site:', error);
+                    document.getElementById('siteRecommendation').textContent = 'Erro ao buscar indicações';
+                    document.getElementById('noRecommendation').textContent = 'Erro ao buscar indicações';
+                });
+
+            // Adicione a busca das avaliações por nível
+            fetch('http://localhost:8080/avaliacoes/porcentagem/nivel')
+                .then(response => response.json())
+                .then(data => {
+                    const levelPercentage = data.PorcentagemNivel;
+                    document.getElementById('levelPercentage').textContent = `Nível de Avaliação: ${levelPercentage.toFixed(2)}%`;
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar avaliações por nível:', error);
+                    document.getElementById('levelPercentage').textContent = 'Erro ao buscar nível de avaliações';
+                });
+        }
+
+
+        fetchReviewsCount();
+        setInterval(fetchReviewsCount, 10000);
+
+
+        fetchEventsCount();
+        setInterval(fetchEventsCount, 10000); 
+    </script>
+    <script>
+
+        function fetchVotosData() {
+            fetch('http://localhost:8080/avaliacoes/porcentagem/votos')
+                .then(response => response.json())
+                .then(data => {
+                    const votosContainer = document.getElementById('votos-container');
+                    votosContainer.innerHTML = `
+                        <p>Porcentagem de Homens que votaram "Sim": ${data.PorcentagemHomensSim.toFixed(2)}%</p>
+                        <p>Porcentagem de Homens que votaram "Não": ${data.PorcentagemHomensNao.toFixed(2)}%</p>
+                        <p>Porcentagem de Mulheres que votaram "Sim": ${data.PorcentagemMulheresSim.toFixed(2)}%</p>
+                        <p>Porcentagem de Mulheres que votaram "Não": ${data.PorcentagemMulheresNao.toFixed(2)}%</p>
+                    `;
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar dados da API:', error);
+                });
+        }
+
+
+        window.onload = fetchVotosData;
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="home.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="grupo.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .grupo-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Cada card terá no mínimo 300px de largura */
+            gap: 20px; /* Espaço entre os cards */
+        }
+    
+        .card {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="my_header">
+        <div class="my_header_1">
+            <a href="#"><img src="home-img/backpack.png" alt="backpack"></a>
+        </div>
+        <div class="my_header_2">
+            <ul>
+                <li><strong><a href="home.html">Home</a></strong></li>
+                <li><strong><a href="evento.html">Eventos</a></strong></li>
+                <li><strong><a href="CadastroFornecedores.html">Cadastro de Eventos</a></strong></li>
+                <li><strong><a href="index.html">IQF</a></strong></li>
+                <li><strong><a href="SegurancaUsuario.html">Denúncia</a></strong></li>
+                <li><strong><a href="avaliacao.html">Avalie-nos</a></strong></li>
+                <li><strong><a href="grupo.html">Cadastrar Grupo</a></strong></li>
+                <li><strong><a href="GruposCadastrados.html">Grupos</a></strong></li>
+                <li><strong><a href="indicador.html">Desempenho do site</a></strong></li>
+            </ul>
+        </div>
+        <div class="my_header_2_1">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Menu
+                </button>
+                <ul class="dropdown-menu">
+                    <li><strong><a class="dropdown-item" href="home.html">Home</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="evento.html">Eventos</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="CadastroFornecedores.html">Cadastro de Eventoss</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="index.html">IQF</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="SegurancaUsuario.html">Denúncia</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="avaliacao.html">Avalie-nos</a></strong></li>
+                    <li><strong><a href="grupo.html">Cadastrar Grupo</a></strong></li>
+                    <li><strong><a href="GruposCadastrados.html">Grupos</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="indicador.html">Desempenho do site</a></strong></li>
+                </ul>
+            </div>
+        </div>
+        <div class="my_header_3">
+            <a href="usuario.html"><img src="home-img/do-utilizador.png" alt="user-icon"></a>
+        </div>
+    </header>
+
+    <main class="main_grupo">
+        <div id="grupoContainer" class="grupo-container">
+            <!-- Os cards de grupo serão exibidos aqui -->
+        </div>
+    </main>
+
+    <!-- Modal para Entrar no Grupo -->
+    <div class="modal fade" id="nomeModal" tabindex="-1" aria-labelledby="nomeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="nomeModalLabel">Digite seu nome</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="nomeUsuario" class="form-control" placeholder="Seu nome">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" onclick="entrarNoGrupoComNome()">Entrar no Grupo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Função para obter e exibir grupos
+            function obterGrupos() {
+                $.ajax({
+                    type: "GET",
+                    url: "http://localhost:8080/grupos", // Substitua pela URL correta do seu backend
+                    dataType: "json",
+                    success: function (grupos) {
+                        exibirGrupos(grupos);
+                    },
+                    error: function (error) {
+                        console.error("Erro ao obter grupos:", error);
+                    }
+                });
+            }
+
+            // Função para exibir grupos em formato de cards
+            function exibirGrupos(grupos) {
+                var container = $("#grupoContainer");
+
+                // Limpa o conteúdo atual
+                container.empty();
+
+                // Itera sobre os grupos e cria cards para cada um
+                grupos.forEach(function (grupo) {
+                    var cardHtml = `
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">${grupo.nomeGrupo}</h5>
+                                <p class="card-text">Local: ${grupo.localDestino}</p>
+                                <p class="card-text">Interesses: ${grupo.interesses.join(', ')}</p>
+                                <p class="card-text">Orçamento Estimado: ${grupo.orcamentoEstimado}</p>
+                                <p class="card-text">Data de Partida: ${grupo.dataPartida}</p>
+                                <p class="card-text">Data de Retorno: ${grupo.dataRetorno}</p>
+                                <button class="btn btn-primary entrar-btn" data-bs-toggle="modal" data-bs-target="#nomeModal">Entrar no Grupo</button>
+                            </div>
+                        </div>
+                    `;
+
+                    // Adiciona o card ao container
+                    container.append(cardHtml);
+                });
+
+                // Adiciona evento de clique ao botão "Entrar no Grupo" no modal
+                $(".entrar-btn").click(function () {
+                    // Lógica para abrir o modal
+                    // (não é mais necessário chamar a função entrarNoGrupo diretamente aqui)
+                });
+            }
+
+            // Chama a função para obter e exibir grupos quando a página carrega
+            obterGrupos();
+        });
+
+        // Função para entrar no grupo com o nome do usuário
+        function entrarNoGrupoComNome() {
+            var nomeUsuario = $("#nomeUsuario").val();
+
+            if (nomeUsuario.trim() === "") {
+                alert("Por favor, digite seu nome.");
+                return;
+            }
+
+            // Lógica para entrar no grupo com o nome do usuário
+            // Substitua pela lógica apropriada, incluindo a URL correta do seu backend
+            // Exemplo: $.ajax({ ... });
+            
+            // Feche o modal
+            $("#nomeModal").modal('hide');
+        }
+    </script>
+
+    <script>
+        // Função para verificar se o usuário está logado
+        function verificarLogin() {
+            const usuario = JSON.parse(localStorage.getItem('usuario'));
+
+            if (!usuario) {
+                // Se não houver dados de usuário no localStorage, redirecione para a página de login
+                window.location.href = 'entrar.html'; // Altere o destino do redirecionamento conforme necessário
+            }
+        }
+
+        // Função para preencher os campos com os dados do usuário
+        function preencherDadosDoUsuario() {
+            const usuario = JSON.parse(localStorage.getItem('usuario'));
+
+            if (usuario) {
+                document.getElementById('email').textContent = usuario.email || 'Email não encontrado';
+                document.getElementById('cpf').textContent = usuario.cpf || 'CPF não encontrado';
+                document.getElementById('nome').textContent = usuario.nome || 'Nome não encontrado';
+                document.getElementById('estado').textContent = usuario.estado || 'Estado não encontrado';
+                document.getElementById('senha').textContent = usuario.senha || 'Senha não encontrada';
+            } else {
+                // Redirecione o usuário de volta para a página de login
+                window.location.href = 'entrar.html'; // Altere o destino do redirecionamento conforme necessário
+            }
+        }
+
+        // Chame a função para verificar o login e preencher os dados do usuário quando a página for carregada
+        window.addEventListener('load', function () {
+            verificarLogin();
+            preencherDadosDoUsuario();
+        });
+
+        document.getElementById('logout-button').addEventListener('click', function () {
+            // Limpe os dados do usuário atual
+            limparDadosDoUsuario();
+
+            // Redirecione o usuário de volta para a página de login
+            window.location.href = 'entrar.html'; // Altere o destino do redirecionamento conforme necessário
+        });
+    </script>
+
+    <!-- Adicione esta função no bloco de script -->
+<script>
+    // Função para entrar no grupo com o nome do usuário
+    function entrarNoGrupoComNome() {
+        var nomeUsuario = $("#nomeUsuario").val();
+
+        if (nomeUsuario.trim() === "") {
+            alert("Por favor, digite seu nome.");
+            return;
+        }
+
+        // Faz uma requisição ao backend para adicionar o participante ao grupo
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8080/grupos-mochileiros/1/adicionar-participante",  // Substitua pela URL correta do seu backend
+            contentType: "application/json",
+            data: JSON.stringify({
+                nomeUsuario: nomeUsuario
+            }),
+            success: function (grupoAtualizado) {
+                console.log("Usuário adicionado ao grupo:", grupoAtualizado);
+
+                // Atualiza a exibição dos grupos
+                obterGrupos();
+
+                // Feche o modal
+                $("#nomeModal").modal('hide');
+            },
+            error: function (error) {
+                console.error("Erro ao adicionar usuário ao grupo:", error);
+            }
+        });
+    }
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+/* Adicione a seguinte regra para os contêineres de gráficos */
+.chart-container {
+    width: 100%;
+    max-width: 600px; /* ou o valor desejado */
+    margin: 0 auto;   /* centraliza o contêiner */
+}
+
+/* Adicione regras para tornar os gráficos flexíveis */
+canvas {
+    max-width: 100%; /* Garante que o gráfico não ultrapasse a largura do contêiner */
+    height: auto;    /* Permite que a altura do gráfico seja ajustada automaticamente */
+}

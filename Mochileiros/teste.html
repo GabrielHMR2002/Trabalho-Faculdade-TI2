@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="home.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="grupo.css">
+</head>
+
+<body>
+
+    <header class="my_header">
+        <div class="my_header_1">
+            <a href="#"><img src="home-img/backpack.png" alt="backpack"></a>
+        </div>
+        <div class="my_header_2">
+            <ul>
+                <li><strong><a href="home.html">Home</a></strong></li>
+                <li><strong><a href="evento.html">Eventos</a></strong></li>
+                <li><strong><a href="CadastroFornecedores.html">Cadastro de Eventos</a></strong></li>
+                <li><strong><a href="index.html">IQF</a></strong></li>
+                <li><strong><a href="SegurancaUsuario.html">Denúncia</a></strong></li>
+                <li><strong><a href="avaliacao.html">Avalie-nos</a></strong></li>
+                <li><strong><a href="grupo.html">Cadastrar Grupo</a></strong></li>
+                <li><strong><a href="GruposCadastrados.html">Grupos</a></strong></li>
+                <li><strong><a href="indicador.html">Desempenho do site</a></strong></li>
+            </ul>
+        </div>
+        <div class="my_header_2_1">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Menu
+                </button>
+                <ul class="dropdown-menu">
+                    <li><strong><a class="dropdown-item" href="home.html">Home</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="evento.html">Eventos</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="CadastroFornecedores.html">Cadastro de Eventoss</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="index.html">IQF</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="SegurancaUsuario.html">Denúncia</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="avaliacao.html">Avalie-nos</a></strong></li>
+                    <li><strong><a href="grupo.html">Cadastrar Grupo</a></strong></li>
+                    <li><strong><a href="GruposCadastrados.html">Grupos</a></strong></li>
+                    <li><strong><a class="dropdown-item" href="indicador.html">Desempenho do site</a></strong></li>
+                </ul>
+            </div>
+        </div>
+        <div class="my_header_3">
+            <a href="usuario.html"><img src="home-img/do-utilizador.png" alt="user-icon"></a>
+        </div>
+    </header>
+
+    <main class="main_grupo">
+        <div class="form_grupo">
+            <div>
+                <form action="#" method="post">
+                    <br>
+                    <label for="nomeGrupo">Nome do Grupo:</label>
+                    <br>
+                    <input type="text" id="nomeGrupo" name="nomeGrupo">
+                    <br>
+                    <label for="localDestino">Local de Destino:</label>
+                    <br>
+                    <input type="text" id="localDestino" name="localDestino">
+                    <br>
+                    <label for="interesses">Interesses:</label>
+                    <br>
+                    <select id="interesses" name="interesses[]" multiple>
+                        <option value="esporte">Esporte</option>
+                        <option value="cultura">Cultura</option>
+                        <option value="aventura">Aventura</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                    <br>
+                    <label for="orcamentoEstimado">Orçamento Estimado:</label>
+                    <br>
+                    <input type="number" id="orcamentoEstimado" name="orcamentoEstimado" min="0">
+                    <br>
+                    <label for="dataPartida">Data de Partida:</label>
+                    <br>
+                    <input type="date" id="dataPartida" name="dataPartida">
+                    <br>
+                    <label for="dataRetorno">Data de Retorno:</label>
+                    <br>
+                    <input type="date" id="dataRetorno" name="dataRetorno">
+                    <br>
+
+                    <div class="button_grupo">
+                        <div>
+                            <div>
+                                <img src="personagem/R-removebg-preview.ico" alt="">
+                                <h4>Clique aqui para criar o grupo! </h4>
+                            </div>
+                            <div><input type="submit" value="Enviar"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+<script>
+    $(document).ready(function () {
+        $(".my_header_2 li a").hover(function () {
+            $(this).css("padding", "15px");
+            $(this).css("border-radius", "20px");
+            $(this).css("transition", "all 0.3s");
+        }, function () {
+            $(this).css("padding", "");
+            $(this).css("border-radius", "");
+        });
+    });
+
+    $(document).ready(function () {
+        // Adiciona um manipulador de evento para o envio do formulário
+        $("form").submit(function (event) {
+            // Impede o comportamento padrão do formulário (recarregar a página)
+            event.preventDefault();
+
+            // Obtém os valores dos campos do formulário
+            var nomeGrupo = $("#nomeGrupo").val();
+            var localDestino = $("#localDestino").val();
+            var interesses = $("#interesses").val();
+            var orcamentoEstimado = $("#orcamentoEstimado").val();
+            var dataPartida = $("#dataPartida").val();
+            var dataRetorno = $("#dataRetorno").val();
+
+            // Constrói o objeto com os dados do grupo
+            var grupoData = {
+                nomeGrupo: nomeGrupo,
+                localDestino: localDestino,
+                interesses: interesses,
+                orcamentoEstimado: orcamentoEstimado,
+                dataPartida: dataPartida,
+                dataRetorno: dataRetorno
+            };
+
+            // Realiza uma solicitação POST para o endpoint do seu backend
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8080/grupos", // Substitua pela URL correta do seu backend
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(grupoData),
+                dataType: "json",
+                success: function (data) {
+                    // Manipula a resposta do backend (opcional)
+                    console.log("Grupo criado com sucesso:", data);
+
+                    // Exibe um alerta para informar que o grupo foi criado com sucesso
+                    alert("Grupo criado com sucesso!");
+                },
+                error: function (error) {
+                    // Manipula erros (opcional)
+                    console.error("Erro ao criar o grupo:", error);
+
+                    // Exibe um alerta para informar sobre o erro
+                    alert("Erro ao criar o grupo. Verifique o console para mais detalhes.");
+                }
+            });
+        });
+    });
+</script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
